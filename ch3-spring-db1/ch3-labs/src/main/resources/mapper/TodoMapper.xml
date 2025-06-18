@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.ch3labs.mapper.TodoMapper">
+<!--    <insert id="save" parameterType="com.example.ch3codeyourself.domain.Post" useGeneratedKeys="true" keyProperty="id">-->
+<!--        insert into posts (title, body)-->
+<!--        values (#{title}, #{body})-->
+<!--    </insert>-->
+
+<!--    <select id="findAll" resultType="com.example.ch3codeyourself.domain.Post">-->
+<!--        select *-->
+<!--        from posts-->
+<!--    </select>-->
+
+<!--    <select id="findAllWithSearch" parameterType="com.example.ch3codeyourself.dto.PostSearchRequest" resultType="com.example.ch3codeyourself.domain.Post">-->
+<!--        select *-->
+<!--        from posts-->
+<!--        <where>-->
+<!--            <if test="keyword != null and keyword != ''">-->
+<!--                (title like concat('%', #{keyword}, '%'))-->
+<!--            </if>-->
+<!--        </where>-->
+<!--        limit #{size}-->
+<!--        offset #{offset}-->
+<!--    </select>-->
+
+<!--    <select id="findById" parameterType="long" resultType="com.example.ch3codeyourself.domain.Post">-->
+<!--        select *-->
+<!--        from posts-->
+<!--        where id = #{id}-->
+<!--    </select>-->
+
+<!--    <update id="update" parameterType="map">-->
+<!--        update posts-->
+<!--        set title = #{map.title}, body = #{map.body}-->
+<!--        where id = #{map.id}-->
+<!--    </update>-->
+
+<!--    <delete id="delete" parameterType="long">-->
+<!--        delete from posts-->
+<!--        where id = #{id}-->
+<!--    </delete>-->
+
+    <insert id="insert" parameterType="com.example.ch3labs.domain.Todo" useGeneratedKeys="true" keyProperty="id">
+        insert into todos(title, completed)
+        values (#{title}, #{completed})
+    </insert>
+
+    <select id="findAll" resultType="com.example.ch3labs.domain.Todo">
+        select *
+        from todos
+    </select>
+
+    <select id="findByTitle" parameterType="string" resultType="com.example.ch3labs.domain.Todo">
+        select *
+        from todos
+        <where>
+            <if test="keyword != null and keyword != ''">
+                (title like concat('%', #{keyword}, '%'))
+            </if>
+        </where>
+    </select>
+
+    <update id="update" parameterType="com.example.ch3labs.domain.Todo">
+        update todos
+        set title = #{title}, completed = #{completed}
+        where id = #{id}
+    </update>
+
+    <delete id="remove" parameterType="long">
+        delete from todos
+        where id = #{id}
+    </delete>
+
+</mapper>
