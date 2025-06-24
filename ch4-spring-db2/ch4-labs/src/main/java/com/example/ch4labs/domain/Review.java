@@ -1,13 +1,15 @@
 package com.example.ch4labs.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -23,4 +25,10 @@ public class Review {
     private String bookTitle;
     private String bookAuthor;
     private Integer rating;
+
+    @CreatedDate
+    private LocalDateTime createdAt;
+
+    @OneToMany(mappedBy = "review")
+    private List<Comment> comments = new ArrayList<>();
 }

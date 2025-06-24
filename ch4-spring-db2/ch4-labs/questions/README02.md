@@ -40,7 +40,7 @@
 * 모든 조건은 QueryParam으로 조합:
 
   ```
-  /reviews?author=yun&keyword=마법&minRating=3&page=0&size=10
+  /reviews?author=yun&booktitle=마법&minRating=3&page=0&size=10
   ```
 
 #### 📦 `ReviewSearchRequest` DTO 예시
@@ -49,7 +49,6 @@
 public class ReviewSearchRequest {
     private String author;
     private String bookTitle;
-    private String keyword;
     private Integer rating;
     private Integer minRating;
     private Integer maxRating;
